@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
     // Send request to Strapi
     const strapiRes = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/auth/local/register`,
+      `${process.env.NEXT_PUBLIC_STRAPI_URL || "https://supposed-tildi-0mar-5bc1420c.koyeb.app"}/api/auth/local/register`,
       {
         method: "POST",
         headers: {

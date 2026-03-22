@@ -33,7 +33,7 @@ export const useAuthStore = create((set) => ({
       set({ user: null });
       toast.success("Logged out successfully!", { duration: 3000 });
       setTimeout(() => {
-        window.location.href = "/login";
+        window.location.href = "/";
       }, 1000);
     } catch (error) {
       console.error("Logout error:", error);

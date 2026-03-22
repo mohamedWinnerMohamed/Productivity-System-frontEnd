@@ -12,7 +12,7 @@ export async function GET() {
 
     // Verify token with Strapi
     const strapiRes = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}/api/users/me`,
+      `${process.env.NEXT_PUBLIC_STRAPI_URL || "https://supposed-tildi-0mar-5bc1420c.koyeb.app"}/api/users/me`,
       {
         headers: {
           Authorization: `Bearer ${jwt.value}`,

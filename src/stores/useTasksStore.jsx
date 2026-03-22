@@ -35,7 +35,8 @@ export const useTasksStore = create(
       fetchTasks: async () => {
         try {
           // Add filters if needed, but assuming a user only sees their own or we just fetch everything Strapi returns for this token.
-          const res = await fetch('/api/strapi/tasks');
+          // Fetch all including drafts if Draft & Publish is disabled or not handled
+          const res = await fetch('/api/strapi/tasks?publicationState=preview');
           if (res.ok) {
             const json = await res.json();
             // Strapi wraps array in `data`. Handle v4 vs v5.
@@ -45,8 +46,8 @@ export const useTasksStore = create(
               id: t.documentId || t.id,
               actualId: t.id,
               title: t.title,
-              dateISO: t.dateISO,
-              done: t.done,
+              dateISO: t.data?.split('T')[0] || t.date?.split('T')[0] || t.dateISO?.split('T')[0],
+              done: t.isCompleted ?? t.done,
             }));
             set({ tasks: mappedTasks });
           }
@@ -81,8 +82,7 @@ export const useTasksStore = create(
             const res = await fetch('/api/strapi/tasks', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              // Strapi expects the payload inside a `data` object
-              body: JSON.stringify({ data: { title: task.title, dateISO: task.dateISO, done: false } })
+              body: JSON.stringify({ data: { title: task.title, data: task.dateISO, isCompleted: false, publishedAt: new Date().toISOString() } })
             });
             const json = await res.json();
             
@@ -94,15 +94,18 @@ export const useTasksStore = create(
                   id: createdTask.documentId || createdTask.id,
                   actualId: createdTask.id,
                   title: createdTask.title,
-                  dateISO: createdTask.dateISO,
-                  done: createdTask.done
+                  dateISO: createdTask.data?.split('T')[0] || createdTask.date?.split('T')[0] || createdTask.dateISO?.split('T')[0] || task.dateISO,
+                  done: createdTask.isCompleted ?? createdTask.done
                 } : t)
               }));
             } else {
-              throw new Error("Failed to save to server");
+              const errorMsg = json.error?.message || "Failed to save to server";
+              console.error("Strapi Validation Error:", json.error);
+              throw new Error(errorMsg);
             }
           } catch (error) {
-            console.error("Failed to sync task to Strapi:", error);
+            console.error("Failed to sync task to Strapi:", error.message);
+            import("react-hot-toast").then((toast) => toast.default.error("Strapi Error: " + error.message));
             // Revert on failure
             set((state) => ({
               tasks: state.tasks.filter((t) => t.id !== tempId),
@@ -131,7 +134,7 @@ export const useTasksStore = create(
             const res = await fetch(`/api/strapi/tasks/${documentId}`, {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ data: { done: !taskToToggle.done } })
+              body: JSON.stringify({ data: { isCompleted: !taskToToggle.done } })
             });
             
             if (!res.ok) throw new Error("Failed to toggle on server");

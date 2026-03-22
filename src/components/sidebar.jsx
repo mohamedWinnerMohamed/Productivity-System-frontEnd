@@ -65,19 +65,27 @@ export default function SideBar() {
         {/* Menu */}
         <nav className="p-4 space-y-1 flex-1">
           {items.map((item) => {
-            const isActive = location.pathname === item.path;
+            const isActive = location === item.path;
             return (
               <Link
                 key={item.path}
                 href={item.path}
                 onClick={() => setOpen(false)}
+                className="relative block"
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="sidebar-active-tab"
+                    className="absolute inset-0 bg-[#1d4ed8]/10 border border-[#1d4ed8]/20 rounded-lg shadow-[0_4px_12px_rgba(29,78,216,0.15)] z-0"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
                 <div
-                  className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-lg transition-all
+                  className={`relative z-10 flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors
                   ${
                     isActive
-                      ? "bg-zinc-900 text-zinc-100 border border-zinc-800"
-                      : "text-zinc-500 hover:text-zinc-200 hover:bg-zinc-900/50"
+                      ? "text-[#1d4ed8]"
+                      : "text-zinc-500 hover:text-[#1e40af] hover:bg-[#1d4ed8]/5"
                   }`}
                 >
                   {item.icon}

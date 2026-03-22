@@ -11,9 +11,10 @@ export function middleware(request: NextRequest) {
 
   // Allow root path redirection
   if (request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(
-      new URL(token ? "/home" : "/login", request.url),
-    );
+    if (token) {
+      return NextResponse.redirect(new URL("/home", request.url));
+    }
+    return NextResponse.next();
   }
 
   // Skip middleware for internal API routes

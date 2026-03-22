@@ -26,7 +26,8 @@ export const useNotesStore = create(
 
             fetchNotes: async () => {
                 try {
-                    const res = await fetch('/api/strapi/notes');
+                    // Fetch all including drafts
+                    const res = await fetch('/api/strapi/notes?publicationState=preview');
                     if (res.ok) {
                         const json = await res.json();
                         const notesData = json.data || [];
@@ -35,7 +36,7 @@ export const useNotesStore = create(
                             actualId: n.id,
                             text: n.text || n.content || "",
                             completed: n.completed || false,
-                            dateISO: n.dateISO,
+                            dateISO: n.data?.split('T')[0] || n.date?.split('T')[0] || n.dateISO?.split('T')[0],
                         }));
                         set({ notes: mappedNotes });
                     }
@@ -59,7 +60,7 @@ export const useNotesStore = create(
                         const res = await fetch('/api/strapi/notes', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ data: { text: note, completed: false, dateISO } })
+                            body: JSON.stringify({ data: { text: note, completed: false, data: dateISO, publishedAt: new Date().toISOString() } })
                         });
                         const json = await res.json();
                         if (res.ok) {
@@ -70,7 +71,7 @@ export const useNotesStore = create(
                                     actualId: created.id,
                                     text: created.text || created.content,
                                     completed: created.completed,
-                                    dateISO: created.dateISO
+                                    dateISO: created.data?.split('T')[0] || created.date?.split('T')[0] || created.dateISO?.split('T')[0] || dateISO
                                 } : n)
                             }));
                         } else {
