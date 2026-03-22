@@ -280,7 +280,7 @@ export default function AnalyticsPage() {
               backgroundColor: "rgba(59, 130, 246, 0.2)",
               borderColor: "rgba(59, 130, 246, 0.8)",
               borderWidth: 2,
-              pointBackgroundColor: "#3b82f6",
+              pointBackgroundColor: "#1d4ed8",
               pointBorderColor: "#fff",
               pointHoverRadius: 6,
             },
@@ -309,7 +309,7 @@ export default function AnalyticsPage() {
       label: "Total Pomodoros",
       value: monthlyStats.totalPomodoros,
       icon: Zap,
-      color: "text-yellow-500"
+      color: "text-[#1d4ed8]"
     },
     {
       label: "Focus Time",

@@ -5,8 +5,8 @@
   --background-primary: #000000;
   --background-secondary: #1c1c1e;
   --background-tertiary: #2c2c2e;
-  --accent-primary: #fbbf24;
-  --accent-hover: #fcd34d;
+  --accent-primary: #1d4ed8;
+  --accent-hover: #1e40af;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
   --border-color: #3f3f46;
@@ -197,12 +197,12 @@ body {
 /* Focus Styles */
 .focus-premium:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.3);
 }
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #172554 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

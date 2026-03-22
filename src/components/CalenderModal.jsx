@@ -188,7 +188,7 @@ export default function CalendarPage() {
                       modifiersStyles={modifiersStyles}
                       className="rounded-md border-none text-zinc-100 p-4"
                       classNames={{
-                        day_selected: "bg-yellow-500 text-black hover:bg-yellow-400 hover:text-black focus:bg-yellow-500 focus:text-black font-bold",
+                        day_selected: "bg-[#1d4ed8] text-white hover:bg-[#1e40af] hover:text-white focus:bg-[#1d4ed8] focus:text-white font-bold",
                         day_today: "bg-zinc-800 text-zinc-100",
                         day: "h-12 w-12 p-0 font-normal aria-selected:opacity-100 hover:bg-zinc-800/50 rounded-xl transition-all text-base",
                         head_cell: "text-zinc-500 rounded-md w-12 font-medium text-sm pb-4",
@@ -236,7 +236,7 @@ export default function CalendarPage() {
                         onClick={() => handleMonthSelect(index)}
                         className={`p-6 rounded-2xl border text-left transition-all ${
                           index === new Date().getMonth() && currentYear === new Date().getFullYear()
-                            ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-500 shadow-lg shadow-yellow-500/10"
+                            ? "border-[#1d4ed8]/30 bg-[#1d4ed8]/10 text-[#1d4ed8] shadow-lg shadow-[#1d4ed8]/10"
                             : "border-zinc-800/50 bg-zinc-900/20 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200 hover:bg-zinc-900/40"
                         }`}
                       >
@@ -265,7 +265,7 @@ export default function CalendarPage() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setShowAddForm(!showAddForm)}
-                  className="p-2 rounded-full bg-yellow-500 text-black shadow-lg shadow-yellow-500/20"
+                  className="p-2 rounded-full bg-[#1d4ed8] text-white shadow-lg shadow-[#1d4ed8]/20"
                 >
                   <Plus size={20} />
                 </motion.button>
@@ -286,7 +286,7 @@ export default function CalendarPage() {
                       placeholder="What's the plan?"
                       value={newPlanTitle}
                       onChange={(e) => setNewPlanTitle(e.target.value)}
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-100 focus:outline-none focus:border-yellow-500/50 transition-colors"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-100 focus:outline-none focus:border-[#1d4ed8]/50 transition-colors"
                       autoFocus
                     />
                     <div className="flex gap-2">
@@ -294,12 +294,12 @@ export default function CalendarPage() {
                         type="time"
                         value={newPlanTime}
                         onChange={(e) => setNewPlanTime(e.target.value)}
-                        className="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-zinc-100 focus:outline-none focus:border-yellow-500/50 transition-colors text-sm"
+                        className="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-zinc-100 focus:outline-none focus:border-[#1d4ed8]/50 transition-colors text-sm"
                       />
                       <select
                         value={newPlanPriority}
                         onChange={(e) => setNewPlanPriority(e.target.value)}
-                        className="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-zinc-100 focus:outline-none focus:border-yellow-500/50 transition-colors text-sm"
+                        className="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-zinc-100 focus:outline-none focus:border-[#1d4ed8]/50 transition-colors text-sm"
                       >
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -365,7 +365,7 @@ export default function CalendarPage() {
                               
                               <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full ${
                                 plan.priority === 'high' ? 'bg-red-500/10 text-red-500' :
-                                plan.priority === 'medium' ? 'bg-yellow-500/10 text-yellow-500' :
+                                plan.priority === 'medium' ? 'bg-[#1d4ed8]/10 text-[#1d4ed8]' :
                                 'bg-blue-500/10 text-blue-500'
                               }`}>
                                 <AlertCircle size={10} />

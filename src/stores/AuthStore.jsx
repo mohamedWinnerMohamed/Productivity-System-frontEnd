@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import toast from "react-hot-toast";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -30,8 +31,13 @@ export const useAuthStore = create((set) => ({
     try {
       await fetch("/api/auth/logout", { method: "POST" });
       set({ user: null });
+      toast.success("Logged out successfully!", { duration: 3000 });
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1000);
     } catch (error) {
       console.error("Logout error:", error);
+      toast.error("Logout failed");
     }
   },
 }));

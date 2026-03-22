@@ -99,7 +99,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-zinc-900/50 text-white outline-none placeholder-zinc-600 border border-zinc-800/50 focus:border-yellow-500/50 transition-all duration-300"
+                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-zinc-900/50 text-white outline-none placeholder-zinc-600 border border-zinc-800/50 focus:border-[#1d4ed8]/50 transition-all duration-300"
               />
             </div>
           </motion.div>
@@ -125,7 +125,7 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-zinc-900/50 text-white outline-none placeholder-zinc-600 border border-zinc-800/50 focus:border-yellow-500/50 transition-all duration-300"
+                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-zinc-900/50 text-white outline-none placeholder-zinc-600 border border-zinc-800/50 focus:border-[#1d4ed8]/50 transition-all duration-300"
               />
             </div>
           </motion.div>
@@ -139,7 +139,7 @@ export default function Login() {
             disabled={loading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-xl text-black font-semibold hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed btn-premium"
+            className="w-full py-3.5 bg-gradient-to-r from-[#1d4ed8] to-[#1e40af] rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-[#1d4ed8]/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed btn-premium"
           >
             {loading ? (
               <>
@@ -169,7 +169,7 @@ export default function Login() {
           Don't have an account?{" "}
           <Link
             href="/signup"
-            className="text-yellow-500 hover:text-yellow-400 font-semibold transition-colors"
+            className="text-[#1d4ed8] hover:text-[#1e40af] font-semibold transition-colors"
           >
             Sign Up
           </Link>
