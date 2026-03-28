@@ -60,7 +60,7 @@ export default function LandingPage() {
       <div className="relative z-10 max-w-4xl w-full text-center space-y-12">
         <div className="space-y-6">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight h-24 md:h-32 flex items-center justify-center flex-col sm:flex-row leading-14">
-            Welcome to <span className="text-[#1d4ed8] ml-4"><TypewriterText text="Orbit" /></span>
+            Welcome to <span className="text-[#052659] ml-4"><TypewriterText text="Orbit" /></span>
           </h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
