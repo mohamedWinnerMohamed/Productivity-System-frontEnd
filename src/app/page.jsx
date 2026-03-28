@@ -40,14 +40,13 @@ export default function LandingPage() {
 
   return (
     <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 overflow-hidden">
-      {/* Background Animated Orbs */}
       <motion.div
         animate={{ 
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-[#1d4ed8]/30 rounded-full blur-[120px] pointer-events-none"
+        className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-[#1d4ed8]/60 rounded-full blur-[120px] pointer-events-none"
       />
       <motion.div
         animate={{ 
@@ -55,13 +54,13 @@ export default function LandingPage() {
           opacity: [0.2, 0.4, 0.2],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] bg-[#1e40af]/30 rounded-full blur-[150px] pointer-events-none"
+        className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] bg-[#1e40af]/60 rounded-full blur-[150px] pointer-events-none"
       />
 
       <div className="relative z-10 max-w-4xl w-full text-center space-y-12">
         <div className="space-y-6">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight h-24 md:h-32 flex items-center justify-center">
-            Welcome to <span className="text-[#1d4ed8] ml-4"><TypewriterText text="Tracify" /></span>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight h-24 md:h-32 flex items-center justify-center flex-col sm:flex-row leading-14">
+            Welcome to <span className="text-[#1d4ed8] ml-4"><TypewriterText text="Orbit" /></span>
           </h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

@@ -58,7 +58,7 @@ export default function SideBar() {
         {/* Header */}
         <div className="flex items-center h-20 px-6 pl-20 border-b border-zinc-800/50">
           <h1 className="font-semibold text-zinc-100 text-xl tracking-tight">
-            Tracify
+            Orbit
           </h1>
         </div>
 
