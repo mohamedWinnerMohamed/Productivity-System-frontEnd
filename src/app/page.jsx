@@ -41,7 +41,7 @@ export default function LandingPage() {
   return (
     <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 overflow-hidden">
       <motion.div
-        animate={{ 
+        animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
@@ -49,37 +49,46 @@ export default function LandingPage() {
         className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-[#1d4ed8]/60 rounded-full blur-[120px] pointer-events-none"
       />
       <motion.div
-        animate={{ 
+        animate={{
           scale: [1, 1.5, 1],
           opacity: [0.2, 0.4, 0.2],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
         className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] bg-[#1e40af]/60 rounded-full blur-[150px] pointer-events-none"
       />
 
       <div className="relative z-10 max-w-4xl w-full text-center space-y-12">
         <div className="space-y-6">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight h-24 md:h-32 flex items-center justify-center flex-col sm:flex-row leading-14">
-            Welcome to <span className="text-[#052659] ml-4"><TypewriterText text="Orbit" /></span>
+            Welcome to{" "}
+            <span className="text-[#1d4ed8] ml-4">
+              <TypewriterText text="Orbit" />
+            </span>
           </h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
             className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto"
           >
-            The ultimate productivity system designed to help you stay focused, organized, and achieve your goals every single day.
+            The ultimate productivity system designed to help you stay focused,
+            organized, and achieve your goals every single day.
           </motion.p>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 mb-16 text-left"
         >
           {features.map((feature, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               whileHover={{ scale: 1.02 }}
               className="group flex items-center gap-4 p-5 rounded-2xl glass border border-zinc-800/50 hover:border-[#1d4ed8]/50 transition-colors shadow-lg shadow-black/50"
@@ -87,7 +96,9 @@ export default function LandingPage() {
               <div className="p-3 bg-zinc-900 group-hover:bg-[#1d4ed8]/20 group-hover:text-[#1d4ed8] text-zinc-400 transition-colors rounded-xl">
                 {feature.icon}
               </div>
-              <span className="text-zinc-200 font-medium text-lg">{feature.text}</span>
+              <span className="text-zinc-200 font-medium text-lg">
+                {feature.text}
+              </span>
             </motion.div>
           ))}
         </motion.div>
@@ -99,7 +110,7 @@ export default function LandingPage() {
           className="flex flex-col items-center gap-6"
         >
           <Link href="/login" className="group">
-            <motion.button 
+            <motion.button
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.05 }}
@@ -112,7 +123,10 @@ export default function LandingPage() {
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className="relative z-10"
               >
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  size={24}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </motion.div>
             </motion.button>
           </Link>
