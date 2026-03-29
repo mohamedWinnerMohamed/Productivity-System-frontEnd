@@ -38,11 +38,11 @@ const useSoundEffect = (url) => {
   };
 };
 
+
 // Sound URLs
 const SOUNDS = {
   click: "https://assets.mixkit.co/active_storage/sfx/2997/2997-preview.mp3",
-  alarm: "https://assets.mixkit.co/active_storage/sfx/1005/1005-preview.mp3",
-  timerEnd: "https://assets.mixkit.co/active_storage/sfx/1006/1006-preview.mp3",
+  timerEnd: "/sounds/freesound_community-bedside-clock-alarm-95792.mp3",
   success: "https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3",
 };
 

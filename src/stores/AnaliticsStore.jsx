@@ -247,7 +247,9 @@ export const useAnalyticsStore = create(
                   start: new Date(start).toISOString(),
                   end: new Date(end).toISOString(),
                   duration,
-                  date
+                  date,
+                  publishedAt: new Date().toISOString(),
+                  type: "work ,"
                 }
               })
             });
@@ -267,10 +269,12 @@ export const useAnalyticsStore = create(
                 };
               });
             } else {
-              throw new Error("Failed to save session to server");
+              console.error("Strapi Validation Error:", json.error);
+              throw new Error(json.error?.message || "Failed to save session to server");
             }
           } catch (error) {
             console.error("Failed to sync session to Strapi:", error);
+            import("react-hot-toast").then((toast) => toast.default.error(error.message || "Failed to save session"));
             set({
               sessions: oldSessions,
               weeklyData: calculateWeeklyData(oldSessions),
